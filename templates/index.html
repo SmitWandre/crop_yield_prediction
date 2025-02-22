@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <h2>Enter Crop Data</h2>
+        <form method="POST" action="{{ url_for('index') }}">
+            <div class="form-group">
+                <label for="temperature">Average Temperature (°C):</label>
+                <input type="number" step="any" class="form-control" id="temperature" name="temperature" required>
+            </div>
+            <div class="form-group">
+                <label for="rainfall">Total Rainfall (mm):</label>
+                <input type="number" step="any" class="form-control" id="rainfall" name="rainfall" required>
+            </div>
+            <div class="form-group">
+                <label for="soil_quality">Soil Quality (0-10):</label>
+                <input type="number" step="any" class="form-control" id="soil_quality" name="soil_quality" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        {% if prediction is not none %}
+            <div class="alert alert-info mt-3">
+                <h4>Predicted Crop Yield: {{ prediction | round(2) }}</h4>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        {% if graphJSON %}
+            <h2>Interactive Graph</h2>
+            <div id="yieldGraph"></div>
+            <script>
+                var graphData = {{ graphJSON | safe }};
+                Plotly.newPlot('yieldGraph', graphData.data, graphData.layout);
+            </script>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
