@@ -15,9 +15,6 @@ dist/
 # Ignore OS generated files
 .DS_Store
 
-# Ignore Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
 # Uncomment the following line if you don't want to track your data folder (optional)
 # data/
 
