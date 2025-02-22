@@ -1,0 +1,23 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore virtual environments
+env/
+venv/
+
+# Ignore build artifacts
+build/
+dist/
+*.egg-info/
+
+# Ignore OS generated files
+.DS_Store
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Uncomment the following line if you don't want to track your data folder (optional)
+# data/
+
